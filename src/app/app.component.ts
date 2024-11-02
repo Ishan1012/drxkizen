@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'drxkizen';
+
+  searchValue: any[] = [];
+
+  constructor(private giveRoute: Router, private fb: FormBuilder){
+  }
+
+  sendSearch()
+  {
+    this.giveRoute.navigate(['products', { queryParams: {search: this.searchValue}}])
+  }
+
 }
